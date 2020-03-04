@@ -1,0 +1,31 @@
+<!-- ヘッダー部分 -->
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class="nav navbar-left">
+      <span style="font-size:20px; color:white;">Bookers</span>
+    </nav>
+
+    <% if user_signed_in? %>
+    <!-- サインイン済みの場合  -->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="glyphicon glyphicon-home home" href="#"> Home</a></li>
+        <li><a class="glyphicon glyphicon-user users" href="#"> Users</a></li>
+        <li><a class="glyphicon glyphicon-book books" href="#"> Books</a></li>
+        <li><a class="glyphicon glyphicon-log-out logout" href="#"> logout</a></li>
+      </ul>
+
+    <% else %>
+    <!-- サインインしていない場合 -->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="glyphicon glyphicon-home home" href="#"> Home</a></li>
+        <li><a class="glyphicon glyphicon-link about" href="#"> About</a></li>
+        <li><a class="glyphicon glyphicon-edit sign_up" href="#"> sign up</a></li>
+        <li><a class="glyphicon glyphicon-log-in sign_in" href="#"> login</a></li>
+      </ul>
+
+    <% end %>
+
+  </div>
+
+</header>
