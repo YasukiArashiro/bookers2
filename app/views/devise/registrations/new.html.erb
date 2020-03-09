@@ -1,16 +1,20 @@
 <!---------- サインアップ画面 ---------->
 
+<body>
 <!-- ヘッダー部分 -->
 <%= render 'layouts/header' %>
 
-<!-- ボディ部分 -->
-
-<body>
+<div calss="main">
   <div class="container">
     <h2 style="margin-top: 70px;">Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :Name %><br />
+        <%= f.text_field :name %>
+      </div>
 
       <div class="field">
         <%= f.label :email %><br />
@@ -40,4 +44,6 @@
     <p class="copyright" style="text-align:right">CopyRight Infratop.inc</p>
 
   </div>
+</div>
+
 </body>
