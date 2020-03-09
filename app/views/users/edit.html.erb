@@ -1,0 +1,25 @@
+
+<body>
+
+	<%= render 'layouts/header' %>
+
+	<div class="container" style="margin-top: 50px;">
+		<div class="row">
+			<h2>User info</h2>
+			<%= form_for(@user) do |f| %>
+				<div class="name">
+					<p><strong>Name </strong><%= f.text_field :name, class:"", id:"inputEmail", placeholder:"名前"%></p>
+				</div>
+				<div class="image">
+					<p><strong>Image</strong></p>
+					<%= f.attachment_field :profile_image_id, class: "user-edit-form" %>
+				</div>
+				<div class="Introduction">
+					<p><strong>Intoroduction</strong><%= f.text_area :introduction %></p>
+				</div>
+				<%= f.submit "Update User", class:"submit" %>
+			<% end %>
+		</div>
+	</div>
+
+</body>
