@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
+  	@book = Book.new
+  	@books = Book.all
   end
 
   def edit
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-  devise_parameter_sanitizer.permit(:name, :profaile_image, :introduction)
+  	params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
 end
