@@ -10,8 +10,8 @@ Rails.application.routes.draw do
    :sessions => 'users/sessions'
   }
 
-  resources :users
+  resources :users, only: [:index, :show, :edit, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :books
+  resources :books, only: [:index, :show, :create, :edit, :update, :destroy]
 
 end
