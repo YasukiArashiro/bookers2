@@ -1,13 +1,32 @@
 class BooksController < ApplicationController
 
+	before_action :ensure_current_user, only: [:edit, :update]
+
+	def ensure_current_user
+		if user_signed_in?
+	    	book = Book.find(params[:id])
+	    	if current_user.id !=  book.user_id
+	      		redirect_to books_path
+	    	end
+	    end
+  	end
+
 	def index
-		@book = Book.new
-		@books = Book.all
+		if user_signed_in?
+			@book = Book.new
+			@books = Book.all
+		else
+			redirect_to new_user_session_path
+		end
 	end
 
 	def show
-		@book = Book.find(params[:id])
-		@user = User.find(@book.user_id)
+		if user_signed_in?
+			@book = Book.find(params[:id])
+			@user = User.find(@book.user_id)
+		else
+			redirect_to new_user_session_path
+		end
 	end
 
 	def create
@@ -24,7 +43,11 @@ class BooksController < ApplicationController
 	end
 
 	def edit
-		@book = Book.find(params[:id])
+		if user_signed_in?
+			@book = Book.find(params[:id])
+		else
+			redirect_to new_user_session_path
+		end
 	end
 
 	def update
